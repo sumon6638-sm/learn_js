@@ -11,6 +11,13 @@ const value = fiveTimes(17);
 const getName = () => 'Brandon Sam';
 const name = getName()
 console.log(name);
+/*
+function square(x) {
+    return x * x;
+}
+*/
+const square = x => x * x;
+console.log(square(9));
 
 
 //multi task operation with arrow function
