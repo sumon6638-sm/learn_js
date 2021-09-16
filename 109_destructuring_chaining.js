@@ -47,9 +47,9 @@ console.log(work, framework, food);
 
  */
 
-//console.log(company.web.tech.third);
+console.log(company.web.tech.third);
 
-
+ 
 console.log(company?.web?.tech?.third);
 console.log(company?.backend?.tech.third);
 
