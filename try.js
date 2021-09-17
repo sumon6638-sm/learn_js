@@ -7,3 +7,4 @@ ul += `<li>Jamai<li>`;
 console.log(ul);
 
 console.log('change from kali linux');
+console.log('change from kali linux');
