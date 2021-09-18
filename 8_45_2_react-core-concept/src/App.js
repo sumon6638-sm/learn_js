@@ -1,33 +1,48 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const products = [
-    { name:'Laptop', price:150000, color:'black', brand:'Dell' },
-
-    { name:'Mobile', price:10000, color:'black', brand:'Samsung' },
-
-    { name: 'Camera', price: 55000, color: 'black', brand: 'Canon' },
-    
-    { name:'Iphone 8plus', price:45000, color:'mateBlack', brand:'Iphone' }
-  ]
+  
 
   return (
     <div className="App">
-
-      {/* Process 2: Add data dynamically by map */}
-      {
-        products.map(product => <Product name={product.name} price={product.price} color={product.color} brand={product.brand}></Product>)
-      }
-      
-      {/* Process 1: Add data manually*/}
-      {/* <Product name='Laptop' price='150000' color='black' brand='Dell'></Product>
-
-      <Product name='Mobile' price='10000' color='blue' brand='Samsung'></Product>
-
-      <Product name='Camera' price='550000' color='black' brand='Canon'></Product> */}
+      <Counter></Counter>
+      <ExternalUsers></ExternalUsers>
     </div>
   );
+}
+
+function ExternalUsers() {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    console.log('Inside use Effect')
+  }, [])
+
+  return (
+    <div>
+      <h3>External Users</h3>
+    </div>
+  )
+}
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  const handleIncrease = () => {
+    // setCount(count+1);
+    const newCount = count +1
+    setCount(newCount);
+  };
+
+  const handleDecrease = () => { setCount(count - 1) };
+  
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick = {handleIncrease}>Increase</button>
+      <button onClick = {handleDecrease}>Decrease</button>
+    </div>
+  )
 }
 
 function Product(props) {
@@ -48,3 +63,32 @@ function Product(props) {
 }
 
 export default App;
+
+
+/* 
+const products = [
+    { name:'Laptop', price:150000, color:'black', brand:'Dell' },
+
+    { name:'Mobile', price:10000, color:'black', brand:'Samsung' },
+
+    { name: 'Camera', price: 55000, color: 'black', brand: 'Canon' },
+
+    { name:'Iphone 8plus', price:45000, color:'mateBlack', brand:'Iphone' }
+  ]
+*/
+
+
+/* 
+{/* Process 2: Add data dynamically by map 
+{
+  products.map(product => <Product name={product.name} price={product.price} color={product.color} brand={product.brand}></Product>)
+}
+
+
+{/* Process 1: Add data manually
+{/* <Product name='Laptop' price='150000' color='black' brand='Dell'></Product>
+
+      <Product name='Mobile' price='10000' color='blue' brand='Samsung'></Product>
+
+      <Product name='Camera' price='550000' color='black' brand='Canon'></Product>
+*/
