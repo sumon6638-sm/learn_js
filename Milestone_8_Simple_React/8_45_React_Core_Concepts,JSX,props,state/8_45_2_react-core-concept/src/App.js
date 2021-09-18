@@ -3,7 +3,6 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 function App() {
-  
 
   return (
     <div className="App">
@@ -13,19 +12,38 @@ function App() {
   );
 }
 
+
 function ExternalUsers() {
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
-    console.log('Inside use Effect')
-  }, [])
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(data => setUsers(data));
+  },[])
 
   return (
     <div>
       <h3>External Users</h3>
+      <p>{users.length}</p>
+      {
+        // users.map(user => <li>{user.name}</li>)
+        users.map(user => <User name = {user.name} email = {user.email}></User>)
+      }
     </div>
   )
 }
 
+function User(props) {
+  return (
+    <div className='user'>
+      <h2>name: {props.name}</h2>
+      <p>email: {props.email}</p>
+    </div>
+  )
+}
+
+// Interface for count
 function Counter() {
   const [count, setCount] = useState(0);
   const handleIncrease = () => {
@@ -45,6 +63,8 @@ function Counter() {
   )
 }
 
+
+// Interface for Product
 function Product(props) {
   
   const productStyle = {
